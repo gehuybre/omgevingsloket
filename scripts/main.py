@@ -14,13 +14,15 @@ def main():
     for var in GRAPH_VARIABLES:
         graph_html = create_graph(df, var)
         table_html = create_table(df, var)  # Generate table here
+        placeholder_text = PLACEHOLDER_TEXTS.get(var, "") # Get placeholder text from variables.py
+
         graph_sections += f"""
         <section class='parallax'>
             <div class='parallax-content'>
                 <h2>{var}</h2>
                 <div class='content-grid'>
                     <div class='text-column'>
-                        <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                        <p>{placeholder_text}</p>
                     </div>
                     <div class='chart-table-column'>
                         <div class='chart'>{graph_html}</div>
