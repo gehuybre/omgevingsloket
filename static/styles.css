@@ -44,7 +44,7 @@ h2 {
     z-index: 2; /* Ensure content is above the parallax image */
 }
 .parallax:nth-child(1){
-    background-color: #f2e9e4; /* Light Pink */
+    background-color: #ffefd5; /* Light Peach/Papaya Whip */
 }
 .parallax:nth-child(2){
     background-color: #d9d7f1; /* Light Purple */
