@@ -12,10 +12,10 @@ GRAPH_VARIABLES = [
 ]
 
 TITLES = {
-    "Nieuwbouw (aantal woongelegenheden)": "Evolutie Nieuwbouwvergunningen",
-    "Verbouwen_or_hergebruik (aantal woongelegenheden)": "Evolutie Verbouw- en Hergebruikvergunningen",
-    "Sloop (aantal gebouwen)": "Evolutie Sloopvergunningen",
-    "Aandeel_meergezinswoning": "Aandeel Meergezinswoningen in Vergunningen"
+    "Nieuwbouw (aantal woongelegenheden)": "Vergunningsaanvragen voor nieuwbouw",
+    "Verbouwen_or_hergebruik (aantal woongelegenheden)": "Vergunningsaanvragen voor renovatie en hergebruik",
+    "Sloop (aantal gebouwen)": "Vergunningsaanvragen voor sloop",
+    "Aandeel_meergezinswoning": "Aandeel mergezinswoningen in Vergunningsaanvragen"
 }
 
 # Placeholder texts for each variable
