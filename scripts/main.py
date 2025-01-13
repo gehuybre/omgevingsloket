@@ -1,5 +1,5 @@
 # /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py
-from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, TABLE_VARIABLES, STATIC_DIR, PLACEHOLDER_TEXTS
+from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR, PLACEHOLDER_TEXTS
 from data_handling import load_data, preprocess_data
 from graph_generator import create_graph
 from table_generator import create_table
