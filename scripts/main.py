@@ -18,9 +18,15 @@ def main():
         <section class='parallax'>
             <div class='parallax-content'>
                 <h2>{var}</h2>
-                <div class='chart'>{graph_html}</div>
-                {table_html}
-                <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                <div class='content-grid'>
+                    <div class='text-column'>
+                        <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                    </div>
+                    <div class='chart-table-column'>
+                        <div class='chart'>{graph_html}</div>
+                        {table_html}
+                    </div>
+                </div>
             </div>
         </section>
         """

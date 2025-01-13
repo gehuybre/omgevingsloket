@@ -1,7 +1,8 @@
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/variables.py ---
+# /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/variables.py
 DATA_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv"
 TEMPLATE_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/template/template.html"
-OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/index.html"  # Changed to a more descriptive name
+OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/index.html"
 STATIC_DIR = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/static"
 
 GRAPH_VARIABLES = [
@@ -10,7 +11,15 @@ GRAPH_VARIABLES = [
     "Sloop (aantal gebouwen)",
     "Aandeel_meergezinswoning"
 ]
+
+TABLE_VARIABLES = [
+    "Nieuwbouw (aantal woongelegenheden)",
+    "Verbouwen_or_hergebruik (aantal woongelegenheden)",
+    "Sloop (aantal gebouwen)",
+    "Aandeel_meergezinswoning"
+]
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/graph_generator.py ---
+# /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/graph_generator.py
 import plotly.graph_objects as go
 from data_handling import preprocess_data
 
@@ -29,9 +38,15 @@ def create_graph(df, variable):
         title=f'{variable} over Time',
         xaxis_title='Jaar Kwartaal',
         yaxis_title=variable,
-        template='plotly_white',  # Use a clean template
+        template='plotly_white',
         font=dict(family="Arial, sans-serif", size=12, color="#7f7f7f"),
+        # Make the background transparent
+        paper_bgcolor='rgba(0,0,0,0)',  # Transparent background
+        plot_bgcolor='rgba(0,0,0,0)',   # Transparent plot area
     )
+    # Remove grid lines
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=False)
 
     # Convert to HTML, include plotly.js from a CDN, and make it standalone
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
@@ -51,9 +66,10 @@ def preprocess_data(df):
     return df
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py ---
 # /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py
-from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR
+from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, TABLE_VARIABLES, STATIC_DIR
 from data_handling import load_data, preprocess_data
 from graph_generator import create_graph
+from table_generator import create_table
 import os
 
 def main():
@@ -64,11 +80,13 @@ def main():
     graph_sections = ""
     for var in GRAPH_VARIABLES:
         graph_html = create_graph(df, var)
+        table_html = create_table(df, var)  # Generate table here
         graph_sections += f"""
         <section class='parallax'>
             <div class='parallax-content'>
                 <h2>{var}</h2>
                 <div class='chart'>{graph_html}</div>
+                {table_html}
                 <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
             </div>
         </section>
@@ -108,7 +126,7 @@ if __name__ == "__main__":
 </head>
 <body>
     <header>
-        <h1>Vergunningen Report</h1>
+        <h1>Hoe evolueerde de bouwconjunctuur in 2024?</h1>
     </header>
 
     <main>
@@ -121,6 +139,7 @@ if __name__ == "__main__":
 </body>
 </html>
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/static/styles.css ---
+/* /content/drive/MyDrive/Colab Notebooks/Vergunningen/static/styles.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -194,6 +213,27 @@ footer {
     width: 100%;
     z-index: 4;
 }
+
+/* Table Styling */
+.data-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table thead {
+    background-color: #f0f0f0;
+}
+
+.data-table th {
+    font-weight: bold;
+}
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv ---
 Jaar,Kwartaal,date_time,Nieuwbouw (aantal woongelegenheden),Verbouwen_or_hergebruik (aantal woongelegenheden),Sloop (aantal gebouwen),Aandeel_meergezinswoning
 2018,Q1,2018-01-01,7457,4748,2023,0.561
@@ -225,3 +265,47 @@ Jaar,Kwartaal,date_time,Nieuwbouw (aantal woongelegenheden),Verbouwen_or_hergebr
 2024,Q3,2024-07-01,11243,8971,4466,0.5952
 2024,Q4,2024-10-01,3560,3089,1416,0.574
 
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/table_generator.py ---
+# /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/table_generator.py
+import pandas as pd
+
+def calculate_yty_percentage_change(df, variable):
+    """Calculates the year-over-year percentage change for a given variable."""
+    df_yearly = df.groupby('Jaar')[variable].sum().reset_index()
+    df_yearly[f'{variable}_yty_change'] = df_yearly[variable].pct_change() * 100
+    return df_yearly
+
+def create_table(df, variable):
+    """Creates an HTML table for the given variable with yearly data and YTY change."""
+    df_yearly = calculate_yty_percentage_change(df, variable)
+
+    # Format the percentage change column
+    df_yearly[f'{variable}_yty_change'] = df_yearly[f'{variable}_yty_change'].apply(lambda x: f'{x:.2f}%' if pd.notnull(x) else '')
+
+    # Create the HTML table
+    table_html = """
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>{}</th>
+                <th>YTY Change</th>
+            </tr>
+        </thead>
+        <tbody>
+    """.format(variable)
+
+    for index, row in df_yearly.iterrows():
+        table_html += f"""
+            <tr>
+                <td>{row['Jaar']}</td>
+                <td>{row[variable]}</td>
+                <td>{row[f'{variable}_yty_change']}</td>
+            </tr>
+        """
+
+    table_html += """
+        </tbody>
+    </table>
+    """
+    return table_html

@@ -38,12 +38,13 @@ h2 {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     margin: 50px auto;
-    max-width: 800px;
+    max-width: 1200px; /* Adjusted max-width */
     border-radius: 5px;
     text-align: center;
     position: relative;
     z-index: 2; /* Ensure content is above the parallax image */
 }
+
 .parallax:nth-child(1){
     background-color: #ffefd5; /* Light Peach/Papaya Whip */
 }
@@ -92,4 +93,19 @@ footer {
 
 .data-table th {
     font-weight: bold;
+}
+
+/* Grid layout for content */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 20px; /* Space between columns */
+}
+
+.text-column {
+    text-align: left; /* Align text to the left */
+}
+
+.chart-table-column {
+    text-align: center; /* Center the chart and table */
 }
