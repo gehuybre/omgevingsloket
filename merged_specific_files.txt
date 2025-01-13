@@ -1,7 +1,7 @@
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/variables.py ---
 DATA_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv"
 TEMPLATE_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/template/template.html"
-OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/output_report.html"  
+OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/index.html"  # Changed to a more descriptive name
 STATIC_DIR = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/static"
 
 GRAPH_VARIABLES = [
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     </main>
 
     <footer>
-        <p>&copy; 2023 Your Name or Organization</p>
+        <p>Embuild Vlaanderen, 2025</p>
     </footer>
 </body>
 </html>
@@ -130,7 +130,7 @@ body {
 }
 
 header {
-    background-color: #00487c; /* Blue header */
+    background-color: #d3d3d3; /* Light Gray/LightGrey */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -167,16 +167,16 @@ h2 {
     z-index: 2; /* Ensure content is above the parallax image */
 }
 .parallax:nth-child(1){
-    background-image: url('https://images.pexels.com/photos/164522/pexels-photo-164522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-color: #ffefd5; /* Light Peach/Papaya Whip */
 }
 .parallax:nth-child(2){
-    background-image: url('https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-color: #d9d7f1; /* Light Purple */
 }
 .parallax:nth-child(3){
-    background-image: url('https://images.pexels.com/photos/280232/pexels-photo-280232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-color: #a9def9; /* Light Blue */
 }
 .parallax:nth-child(4){
-    background-image: url('https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-color: #e4f9f5; /* Light Mint */
 }
 
 .chart {
@@ -185,13 +185,14 @@ h2 {
 }
 
 footer {
-    background-color: #333;
+    background-color: #d3d3d3; /* Light Gray/LightGrey */
     color: #fff;
     text-align: center;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 4;
 }
 --- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv ---
 Jaar,Kwartaal,date_time,Nieuwbouw (aantal woongelegenheden),Verbouwen_or_hergebruik (aantal woongelegenheden),Sloop (aantal gebouwen),Aandeel_meergezinswoning

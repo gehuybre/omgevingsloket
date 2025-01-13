@@ -1,7 +1,8 @@
 # /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py
-from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR
+from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, TABLE_VARIABLES, STATIC_DIR
 from data_handling import load_data, preprocess_data
 from graph_generator import create_graph
+from table_generator import create_table
 import os
 
 def main():
@@ -12,11 +13,13 @@ def main():
     graph_sections = ""
     for var in GRAPH_VARIABLES:
         graph_html = create_graph(df, var)
+        table_html = create_table(df, var)  # Generate table here
         graph_sections += f"""
         <section class='parallax'>
             <div class='parallax-content'>
                 <h2>{var}</h2>
                 <div class='chart'>{graph_html}</div>
+                {table_html}
                 <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
             </div>
         </section>

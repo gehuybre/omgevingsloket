@@ -1,3 +1,4 @@
+/* /content/drive/MyDrive/Colab Notebooks/Vergunningen/static/styles.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -70,4 +71,25 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 4;
+}
+
+/* Table Styling */
+.data-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table thead {
+    background-color: #f0f0f0;
+}
+
+.data-table th {
+    font-weight: bold;
 }
