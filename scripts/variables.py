@@ -5,7 +5,7 @@ OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/index.html"
 STATIC_DIR = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/static"
 
 GRAPH_VARIABLES = [
-    "Nieuwbouw (aantal woongelegenheden)",
+    "Aantal vergunningsaanvragen voor nieuwbouw",
     "Verbouwen_or_hergebruik (aantal woongelegenheden)",
     "Sloop (aantal gebouwen)",
     "Aandeel_meergezinswoning"
@@ -21,7 +21,7 @@ TABLE_VARIABLES = [
 # Placeholder texts for each variable
 PLACEHOLDER_TEXTS = {
     "Nieuwbouw (aantal woongelegenheden)": """
-        <p>Het aantal vergunningsaanvragen voor nieuwbouw is een cruciale voorlopende indicator voor de bouwconjunctuur. Deze cijfers geven een goede indicatie van de bouwactiviteit die we in de komende één tot twee jaar mogen verwachten. Een stijging of daling van het aantal aanvragen wijst op een respectievelijke versnelling of vertraging van de bouwproductie op middellange termijn.</p>
+        <p>Het aantal vergunningsaanvragen voor nieuwbouw is een voorlopende indicator voor de bouwconjunctuur. Aanvragen voor bouwvergunningen geven een goede indicatie van de bouwactiviteit die we in de komende één tot twee jaar mogen verwachten. De vergunninge vervalt immers wannneer niet start wordt met de werken binnen 2 jaar na het verlenen van de definitieve vergunning.</p>
         <h3>Evolutie op Jaarbasis</h3>
         <p>Als we de evolutie van het aantal vergunningen voor nieuwbouw woongelegenheden op jaarbasis bekijken, zien we een opvallende trend: Na een piek in 2019 met een stijging van 27.63% ten opzichte van 2018, zien we een aanhoudende daling in de daaropvolgende jaren. Vooral in 2023 is er met een daling van 15.23% ten opzichte van 2022 sprake van een significante afname. In 2024 zet de trend zich verder door met een afname van maar liefst 29.32% tot een historisch dieptepunt van 35057.  Deze aanhoudende negatieve trend wijst op een sterke afkoeling van de bouwconjunctuur.</p>
         <h3>Seizoensinvloeden en Kwartaalcijfers</h3>

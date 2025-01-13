@@ -14,7 +14,7 @@ def create_graph(df, variable):
     ))
 
     fig.update_layout(
-        title=f'{variable} over Time',
+        title=f'{variable}',
         xaxis_title='Jaar Kwartaal',
         yaxis_title=variable,
         template='plotly_white',
