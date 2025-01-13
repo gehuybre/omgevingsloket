@@ -20,7 +20,7 @@ def main():
         graph_sections += f"""
         <section class='parallax'>
             <div class='parallax-content'>
-                <h2>{title}</h2>  {/* Gebruik de opgehaalde titel */}
+                <h2>{title}</h2>  
                 <div class='content-grid'>
                     <div class='text-column'>
                         {placeholder_text}
