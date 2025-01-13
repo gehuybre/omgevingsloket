@@ -1,0 +1,226 @@
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/variables.py ---
+DATA_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv"
+TEMPLATE_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/template/template.html"
+OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/output_report.html"  
+STATIC_DIR = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/static"
+
+GRAPH_VARIABLES = [
+    "Nieuwbouw (aantal woongelegenheden)",
+    "Verbouwen_or_hergebruik (aantal woongelegenheden)",
+    "Sloop (aantal gebouwen)",
+    "Aandeel_meergezinswoning"
+]
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/graph_generator.py ---
+import plotly.graph_objects as go
+from data_handling import preprocess_data
+
+def create_graph(df, variable):
+    """Creates a Plotly line graph for the given variable."""
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=df['JaarKwartaal'],
+        y=df[variable],
+        mode='lines+markers',
+        name=variable
+    ))
+
+    fig.update_layout(
+        title=f'{variable} over Time',
+        xaxis_title='Jaar Kwartaal',
+        yaxis_title=variable,
+        template='plotly_white',  # Use a clean template
+        font=dict(family="Arial, sans-serif", size=12, color="#7f7f7f"),
+    )
+
+    # Convert to HTML, include plotly.js from a CDN, and make it standalone
+    graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return graph_html
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/data_handling.py ---
+import pandas as pd
+from variables import DATA_FILE
+
+def load_data():
+    """Loads data from the CSV file."""
+    df = pd.read_csv(DATA_FILE)
+    return df
+
+def preprocess_data(df):
+    """Preprocesses the data (combines 'Jaar' and 'Kwartaal')."""
+    df['JaarKwartaal'] = df['Jaar'].astype(str) + " " + df['Kwartaal']
+    return df
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py ---
+# /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py
+from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR
+from data_handling import load_data, preprocess_data
+from graph_generator import create_graph
+import os
+
+def main():
+    """Generates the HTML report."""
+    df = load_data()
+    df = preprocess_data(df)
+
+    graph_sections = ""
+    for var in GRAPH_VARIABLES:
+        graph_html = create_graph(df, var)
+        graph_sections += f"""
+        <section class='parallax'>
+            <div class='parallax-content'>
+                <h2>{var}</h2>
+                <div class='chart'>{graph_html}</div>
+                <p>Placeholder text for {var}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+            </div>
+        </section>
+        """
+
+    # Read the HTML template
+    with open(TEMPLATE_FILE, 'r') as f:
+        template_html = f.read()
+
+    # Read the CSS file
+    css_file = os.path.join(STATIC_DIR, 'styles.css')
+    with open(css_file, 'r') as f:
+        css_content = f.read()
+
+    # Embed CSS into the template
+    output_html = template_html.replace("</head>", f"<style>\n{css_content}\n</style>\n</head>")
+
+    # Insert graph sections into the template
+    output_html = output_html.replace("{{GRAPH_SECTIONS}}", graph_sections)
+
+    # Write the output HTML
+    with open(OUTPUT_FILE, 'w') as f:
+        f.write(output_html)
+
+    print(f"Report generated: {OUTPUT_FILE}")
+
+if __name__ == "__main__":
+    main()
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/template/template.html ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vergunningen Report</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+</head>
+<body>
+    <header>
+        <h1>Vergunningen Report</h1>
+    </header>
+
+    <main>
+        {{GRAPH_SECTIONS}}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Name or Organization</p>
+    </footer>
+</body>
+</html>
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/static/styles.css ---
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #00487c; /* Blue header */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 50px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure content is above the parallax image */
+}
+.parallax:nth-child(1){
+    background-image: url('https://images.pexels.com/photos/164522/pexels-photo-164522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+.parallax:nth-child(2){
+    background-image: url('https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+.parallax:nth-child(3){
+    background-image: url('https://images.pexels.com/photos/280232/pexels-photo-280232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+.parallax:nth-child(4){
+    background-image: url('https://images.pexels.com/photos/450441/pexels-photo-450441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+
+.chart {
+    width: 100%;
+    margin: 20px auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+--- File: /content/drive/MyDrive/Colab Notebooks/Vergunningen/data/samenvattende_tabel.csv ---
+Jaar,Kwartaal,date_time,Nieuwbouw (aantal woongelegenheden),Verbouwen_or_hergebruik (aantal woongelegenheden),Sloop (aantal gebouwen),Aandeel_meergezinswoning
+2018,Q1,2018-01-01,7457,4748,2023,0.561
+2018,Q2,2018-04-01,14797,7364,3517,0.6129
+2018,Q3,2018-07-01,15324,6762,3228,0.6408
+2018,Q4,2018-10-01,20225,8070,4398,0.6135
+2019,Q1,2019-01-01,14082,6931,3651,0.5911
+2019,Q2,2019-04-01,16838,8470,4123,0.589
+2019,Q3,2019-07-01,17429,6987,4417,0.6047
+2019,Q4,2019-10-01,25427,9921,5665,0.6106
+2020,Q1,2020-01-01,11643,8235,4179,0.5636
+2020,Q2,2020-04-01,15005,8616,4632,0.5933
+2020,Q3,2020-07-01,16362,8810,4724,0.6107
+2020,Q4,2020-10-01,22797,10481,6331,0.5711
+2021,Q1,2021-01-01,11158,9904,4633,0.4997
+2021,Q2,2021-04-01,16335,10557,5698,0.5385
+2021,Q3,2021-07-01,15041,8345,4859,0.5683
+2021,Q4,2021-10-01,21462,10398,6527,0.5548
+2022,Q1,2022-01-01,10426,7569,4238,0.5107
+2022,Q2,2022-04-01,14177,9482,5312,0.5467
+2022,Q3,2022-07-01,14299,8736,4584,0.5804
+2022,Q4,2022-10-01,19611,9567,6039,0.5729
+2023,Q1,2023-01-01,9917,9059,4169,0.5472
+2023,Q2,2023-04-01,12423,9372,4895,0.5372
+2023,Q3,2023-07-01,14937,10229,5102,0.609
+2023,Q4,2023-10-01,12323,9941,4755,0.5852
+2024,Q1,2024-01-01,10245,8912,4132,0.571
+2024,Q2,2024-04-01,10009,9184,4992,0.5457
+2024,Q3,2024-07-01,11243,8971,4466,0.5952
+2024,Q4,2024-10-01,3560,3089,1416,0.574
+
