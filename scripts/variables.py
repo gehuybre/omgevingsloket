@@ -5,13 +5,6 @@ OUTPUT_FILE = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/index.html"
 STATIC_DIR = "/content/drive/MyDrive/Colab Notebooks/Vergunningen/static"
 
 GRAPH_VARIABLES = [
-    "Aantal vergunningsaanvragen voor nieuwbouw",
-    "Verbouwen_or_hergebruik (aantal woongelegenheden)",
-    "Sloop (aantal gebouwen)",
-    "Aandeel_meergezinswoning"
-]
-
-TABLE_VARIABLES = [
     "Nieuwbouw (aantal woongelegenheden)",
     "Verbouwen_or_hergebruik (aantal woongelegenheden)",
     "Sloop (aantal gebouwen)",
