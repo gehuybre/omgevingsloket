@@ -32,7 +32,16 @@ PLACEHOLDER_TEXTS = {
         <h3>Conclusie</h3>
         <p>De vergunningsaanvragen voor nieuwbouw woongelegenheden zijn een belangrijke graadmeter voor de toekomstige bouwactiviteit. De data laten een duidelijke negatieve trend zien, met een historisch dieptepunt in 2024. Seizoensinvloeden zorgen voor pieken in het vierde kwartaal en dalen in het eerste kwartaal. De aanhoudende daling wijst op een significante afkoeling van de bouwconjunctuur, wat de komende jaren voelbaar zal zijn in de bouwsector.</p>
     """,
-    "Verbouwen_or_hergebruik (aantal woongelegenheden)": "Hier komt de uitleg over verbouwen of hergebruik. Beschrijf de trends en opvallende zaken in de data.",
+    "Verbouwen_or_hergebruik (aantal woongelegenheden)": """<p>Het aantal vergunningsaanvragen voor verbouwingen of hergebruik van bestaande panden is een belangrijke indicator voor de renovatiemarkt. Deze cijfers geven een beeld van de investeringen in het opknappen en aanpassen van de bestaande woningvoorraad.</p>
+<h3>Evolutie op Jaarbasis</h3>
+<p>De evolutie van het aantal vergunningen voor verbouwingen of hergebruik op jaarbasis toont een wisselend beeld: We zien een aanzienlijke stijging van 19.91% in 2019 ten opzichte van 2018, gevolgd door een verdere toename in 2020 en 2021. In 2022 is er een daling van -9.82%, maar in 2023 zien we weer een stijging van 9.18%. Echter, in 2024 zien we opnieuw een sterke daling van 21.88%. Deze schommelingen wijzen op een minder stabiele markt in vergelijking met de nieuwbouw. De daling van 2024 is in vergelijking met de andere jaren extreem.</p>
+<h3>Seizoensinvloeden en Kwartaalcijfers</h3>
+<p>Net als bij nieuwbouw zien we ook bij verbouwingen en hergebruik een seizoenspatroon, hoewel dit minder uitgesproken is. Over het algemeen worden er in het laatste kwartaal van het jaar meer vergunningen aangevraagd.</p>
+<p>De kwartaalcijfers tonen dit patroon zien: In de meeste jaren zien we een piek in het vierde kwartaal. Echter, deze piek is minder uitgesproken dan bij nieuwbouw.</p>
+<h3>Algemene Trend en Schommelingen</h3>
+<p>De algemene trend over de gehele periode is licht stijgend, maar met aanzienlijke schommelingen van jaar tot jaar. Dit wijst op een minder voorspelbare markt dan die van de nieuwbouw. De markt voor verbouwingen en hergebruik lijkt gevoeliger te zijn voor economische schommelingen en veranderende regelgeving. Het is aannemelijk dat de extreme daling in 2024 hier ook mee te maken heeft.</p>
+<h3>Conclusie</h3>
+<p>De vergunningsaanvragen voor verbouwingen en hergebruik tonen een wisselend beeld met aanzienlijke schommelingen. Hoewel er sprake is van een lichte stijging over de gehele periode, is de markt minder stabiel en voorspelbaar dan die van de nieuwbouw. De cijfers laten zien dat de renovatiemarkt een belangrijke rol speelt in de bouwsector, maar dat deze ook gevoeliger is voor externe factoren. De extreme daling in 2024 is hier het bewijs van.</p>""",
     "Sloop (aantal gebouwen)": "Hier komt de uitleg over sloop. Beschrijf de trends en opvallende zaken in de data.",
     "Aandeel_meergezinswoning": "Hier komt de uitleg over het aandeel meergezinswoningen. Beschrijf de trends en opvallende zaken in de data."
 }
