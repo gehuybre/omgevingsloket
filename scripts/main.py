@@ -13,8 +13,8 @@ def main():
     graph_sections = ""
     for var in GRAPH_VARIABLES:
         graph_html = create_graph(df, var)
-        table_html = create_table(df, var)  # Generate table here
-        placeholder_text = PLACEHOLDER_TEXTS.get(var, "") # Get placeholder text from variables.py
+        table_html = create_table(df, var)
+        placeholder_text = PLACEHOLDER_TEXTS.get(var, "")
 
         graph_sections += f"""
         <section class='parallax'>
@@ -22,7 +22,7 @@ def main():
                 <h2>{var}</h2>
                 <div class='content-grid'>
                     <div class='text-column'>
-                        <p>{placeholder_text}</p>
+                        {placeholder_text}
                     </div>
                     <div class='chart-table-column'>
                         <div class='chart'>{graph_html}</div>
