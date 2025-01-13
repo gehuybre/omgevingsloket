@@ -1,3 +1,4 @@
+# /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/graph_generator.py
 import plotly.graph_objects as go
 from data_handling import preprocess_data
 
@@ -16,9 +17,15 @@ def create_graph(df, variable):
         title=f'{variable} over Time',
         xaxis_title='Jaar Kwartaal',
         yaxis_title=variable,
-        template='plotly_white',  # Use a clean template
+        template='plotly_white',
         font=dict(family="Arial, sans-serif", size=12, color="#7f7f7f"),
+        # Make the background transparent
+        paper_bgcolor='rgba(0,0,0,0)',  # Transparent background
+        plot_bgcolor='rgba(0,0,0,0)',   # Transparent plot area
     )
+    # Remove grid lines
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=False)
 
     # Convert to HTML, include plotly.js from a CDN, and make it standalone
     graph_html = fig.to_html(full_html=False, include_plotlyjs='cdn')
