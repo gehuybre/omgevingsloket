@@ -11,6 +11,13 @@ GRAPH_VARIABLES = [
     "Aandeel_meergezinswoning"
 ]
 
+TITLES = {
+    "Nieuwbouw (aantal woongelegenheden)": "Evolutie Nieuwbouwvergunningen",
+    "Verbouwen_or_hergebruik (aantal woongelegenheden)": "Evolutie Verbouw- en Hergebruikvergunningen",
+    "Sloop (aantal gebouwen)": "Evolutie Sloopvergunningen",
+    "Aandeel_meergezinswoning": "Aandeel Meergezinswoningen in Vergunningen"
+}
+
 # Placeholder texts for each variable
 PLACEHOLDER_TEXTS = {
     "Nieuwbouw (aantal woongelegenheden)": """

@@ -1,5 +1,5 @@
 # /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/main.py
-from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR, PLACEHOLDER_TEXTS
+from variables import TEMPLATE_FILE, OUTPUT_FILE, GRAPH_VARIABLES, STATIC_DIR, PLACEHOLDER_TEXTS, TITLES
 from data_handling import load_data, preprocess_data
 from graph_generator import create_graph
 from table_generator import create_table
@@ -15,11 +15,12 @@ def main():
         graph_html = create_graph(df, var)
         table_html = create_table(df, var)
         placeholder_text = PLACEHOLDER_TEXTS.get(var, "")
+        title = TITLES.get(var, var)  # Gebruik de titel uit TITLES, of de variabele naam als fallback
 
         graph_sections += f"""
         <section class='parallax'>
             <div class='parallax-content'>
-                <h2>{var}</h2>
+                <h2>{title}</h2>  {/* Gebruik de opgehaalde titel */}
                 <div class='content-grid'>
                     <div class='text-column'>
                         {placeholder_text}
