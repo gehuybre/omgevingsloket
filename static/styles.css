@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #fff5ee; /* Light Cream/Seashell */
+    background-color: #d3d3d3; /* Light Gray/LightGrey */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -62,7 +62,7 @@ h2 {
 }
 
 footer {
-    background-color: #fff5ee; /* Light Cream/Seashell */
+    background-color: #d3d3d3; /* Light Gray/LightGrey */
     color: #fff;
     text-align: center;
     padding: 10px 0;
