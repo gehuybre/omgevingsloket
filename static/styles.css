@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #d3d3d3; /* Light Gray/LightGrey */
+    background-color: #faf3b0; /* Light Yellow */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -46,7 +46,7 @@ h2 {
 }
 
 .parallax:nth-child(1){
-    background-color: #fdf078; /* Light Peach/Papaya Whip */
+    background-color: #faf3b0; /* Light Yellow */
 }
 .parallax:nth-child(2){
     background-color: #d9d7f1; /* Light Purple */

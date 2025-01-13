@@ -1,6 +1,7 @@
 # /content/drive/MyDrive/Colab Notebooks/Vergunningen/scripts/graph_generator.py
 import plotly.graph_objects as go
 from data_handling import preprocess_data
+from variables import TITLES  # Importeer de TITLES dictionary
 
 def create_graph(df, variable):
     """Creates a Plotly line graph for the given variable."""
@@ -13,8 +14,11 @@ def create_graph(df, variable):
         name=variable
     ))
 
+    # Gebruik de TITLES dictionary om de titel op te halen
+    title_text = TITLES.get(variable, variable)  # Fallback naar variable als de titel niet gevonden is
+
     fig.update_layout(
-        title=f'{variable}',
+        title=title_text,  # Gebruik de opgehaalde titel
         xaxis_title='Jaar Kwartaal',
         yaxis_title=variable,
         template='plotly_white',
