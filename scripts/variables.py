@@ -37,8 +37,7 @@ PLACEHOLDER_TEXTS = {
 <p>Net als bij nieuwbouw zien we ook bij verbouwingen en hergebruik een seizoenspatroon, hoewel dit minder uitgesproken is. Over het algemeen worden er in het laatste kwartaal van het jaar meer vergunningen aangevraagd.</p>
 <p>De kwartaalcijfers tonen dit patroon zien: In de meeste jaren zien we een piek in het vierde kwartaal. Echter, deze piek is minder uitgesproken dan bij nieuwbouw.</p>
 <h3>Algemene trend en schommelingen</h3>
-<p>De algemene trend over de gehele periode is licht stijgend, maar met aanzienlijke schommelingen van jaar tot jaar. Dit wijst op een minder voorspelbare markt dan die van de nieuwbouw. De markt voor verbouwingen en hergebruik lijkt gevoeliger te zijn voor economische schommelingen en veranderende regelgeving. Het is aannemelijk dat de extreme daling in 2024 hier ook mee te maken heeft.</p>
-<h3>Conclusie</h3>"""
-   "Sloop (aantal gebouwen)": "Hier komt de uitleg over sloop. Beschrijf de trends en opvallende zaken in de data.",
+<p>De algemene trend over de gehele periode is licht stijgend, maar met aanzienlijke schommelingen van jaar tot jaar. Dit wijst op een minder voorspelbare markt dan die van de nieuwbouw. De markt voor verbouwingen en hergebruik lijkt gevoeliger te zijn voor economische schommelingen en veranderende regelgeving. Het is aannemelijk dat de extreme daling in 2024 hier ook mee te maken heeft.</p>""",
+    "Sloop (aantal gebouwen)": "Hier komt de uitleg over sloop. Beschrijf de trends en opvallende zaken in de data.",
     "Aandeel_meergezinswoning": "Hier komt de uitleg over het aandeel meergezinswoningen. Beschrijf de trends en opvallende zaken in de data."
 }
